@@ -9,10 +9,11 @@ interface IPrimaryButtonProps {
     icon?: IconProp
     link?: string
     type?: PrimaryButtonType
+    onClick?: () => void
 }
 
 export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
-    const { children, disabled = false, icon, link, type = "primary" } = props;
+    const { children, disabled = false, icon, link, onClick, type = "primary" } = props;
 
     const getClass = (type: PrimaryButtonType) => {
         const baseClasses = "flex items-center px-4 py-2 rounded font-poppins font-bold"
@@ -20,7 +21,7 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
             case "secondary":
                 return baseClasses + " bg-cultured hover:bg-cultured-light text-spring-green";
             case "gradient":
-                return baseClasses + " bg-gradient text-cultured-light border-[2px] border-cultured-light shadow";
+                return baseClasses + " bg-gradient hover:bg-gradient-reverse text-cultured-light border-[2px] border-cultured-light shadow";
             default:
                 return baseClasses + " bg-dark-jungle hover:bg-dark-jungle-light text-cultured-light";
         }
@@ -38,7 +39,7 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
     }
 
     return (
-        <button className={getClass(type)}>
+        <button className={getClass(type)} onClick={onClick}>
            {icon && <FontAwesomeIcon className='w-6 h-6 mr-2' icon={icon} />} {children}
         </button>
     );

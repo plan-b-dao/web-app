@@ -35,6 +35,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient": "linear-gradient(to right bottom, #33ff79, #34ff8f, #3dffa2, #4bffb4, #5cffc3)",
+        "gradient-reverse": "linear-gradient(to right top, #33ff79, #34ff8f, #3dffa2, #4bffb4, #5cffc3)",
         "philanthropy": "url('/assets/images/philanthropy-bg.png')"
       },
       height: {

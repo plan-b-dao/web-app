@@ -11,6 +11,12 @@ interface ICustomeNavLinkProps extends LinkProps {
 const CustomeNavLink: React.FC<ICustomeNavLinkProps> = ({ children, to, isSupported, ...props }) => {
     const resoved = useResolvedPath(to);
     const match = useMatch({ path: resoved.pathname, end:true });
+
+    if (!isSupported) {
+        return (
+            <div className={getClass(match ? true : false, isSupported)}>{children}</div>
+        );
+    }
     
     return (
         <Link to={to} {...props}>

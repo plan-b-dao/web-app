@@ -8,9 +8,9 @@ export const Wallet: React.FC<IWalletProps> = () => {
     return (
         <div>
             {account ?
-                <div className="px-2 py-1 rounded-md bg-cultured-dark">0x12sa...fe44</div>
+                <div className="px-2 py-1 text-sm rounded-md bg-cultured-dark">0x12sa...fe44</div>
             :
-                <button className="px-2 py-1 rounded-md bg-cultured-dark hover:bg-cultured shadow text-dark-jungle-light">connect wallet</button>
+                <button className="px-2 py-1 text-sm rounded-md bg-cultured-dark hover:bg-cultured shadow text-dark-jungle-light">connect wallet</button>
             }
         </div>
     );
