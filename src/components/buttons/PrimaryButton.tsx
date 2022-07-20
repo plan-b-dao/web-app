@@ -21,7 +21,7 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
             case "secondary":
                 return baseClasses + " bg-cultured hover:bg-cultured-light text-spring-green";
             case "gradient":
-                return baseClasses + " bg-gradient hover:bg-gradient-reverse text-cultured-light border-[2px] border-cultured-light shadow";
+                return baseClasses + " bg-gradient transition hover:bg-gradient-reverse text-cultured-light border-[2px] border-cultured-light shadow";
             default:
                 return baseClasses + " bg-dark-jungle hover:bg-dark-jungle-light text-cultured-light";
         }

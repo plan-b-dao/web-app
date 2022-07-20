@@ -4,15 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { AccountProvider, Web3Provider } from './context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Web3Provider>
+      <AccountProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AccountProvider>
+    </Web3Provider>
   </React.StrictMode>
 );
 
