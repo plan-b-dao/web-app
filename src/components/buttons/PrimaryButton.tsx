@@ -31,16 +31,16 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
     if (link) {
         return (
             <Link to={link}>
-                <button className={getClass(type)}>
+                <div className={getClass(type)}>
                     {icon && <FontAwesomeIcon className='w-6 h-6 mr-2' icon={icon} />} {children}
-                </button>
+                </div>
             </Link>
         )
         
     }
 
     return (
-        <button className={getClass(type)} onClick={onClick}>
+        <button disabled={disabled} className={getClass(type)} onClick={onClick}>
            {icon && <FontAwesomeIcon className='w-6 h-6 mr-2' icon={icon} />} {children}
         </button>
     );

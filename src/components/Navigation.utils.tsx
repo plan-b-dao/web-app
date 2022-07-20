@@ -1,5 +1,5 @@
 export const getClass = (active: boolean, isSupported: boolean, className?: string) => {
-    const baseClass = "px-2 py-2 mx-2 text-sm rounded-xl my-3 "
+    const baseClass = "px-2 py-2 mx-2 text-sm rounded-xl my-3 font-bold "
     
     if (!isSupported) {
         return baseClass + "bg-cultured-dark text-[#CCCCCC] cursor-not-allowed";

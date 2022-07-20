@@ -1,8 +1,10 @@
 import { PrimaryButton } from "../components/buttons";
+import { useAccountContext } from "../context";
 
 interface IFounderProps {}
 
 export const Founder: React.FC<IFounderProps> = (props) => {
+    const { account } = useAccountContext();
 
     return (
         <main className="space-y-8 text-[18px] mb-10">
@@ -13,7 +15,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                     </div>
                 </div>
                 <div className="sm:ml-auto">
-                    <PrimaryButton type="gradient" onClick={() => console.log("not implemented!")}>Mint Founder NFT</PrimaryButton>
+                    <PrimaryButton type="gradient" onClick={() => console.log("not implemented!")}>{account ? "Mint Founder NFT" : "Connect to Wallet"}</PrimaryButton>
                 </div>
             </div>
             <div>
