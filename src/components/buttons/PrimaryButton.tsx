@@ -1,5 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 type PrimaryButtonType = "primary" | "secondary" | "gradient"
 
@@ -29,11 +30,11 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
 
     if (link) {
         return (
-            <a href={link}>
+            <Link to={link}>
                 <button className={getClass(type)}>
                     {icon && <FontAwesomeIcon className='w-6 h-6 mr-2' icon={icon} />} {children}
                 </button>
-            </a>
+            </Link>
         )
         
     }
