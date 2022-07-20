@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAccountContext, useWeb3Context } from "../../context";
 import { formatAddress } from "../../utils/formats";
 

@@ -26,7 +26,7 @@ const CustomeNavLink: React.FC<ICustomeNavLinkProps> = ({ children, to, isSuppor
 }
 
 export const Navigation: React.FC<INavigationProps> = () => {
-    const { navigationItem, isFounderActive } = useConfig();
+    const { navigationItem } = useConfig();
 
     return (
         <nav className="space-y-2">
