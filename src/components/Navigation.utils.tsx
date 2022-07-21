@@ -20,3 +20,7 @@ export const getRouteLink = (route: string) => {
             return `/${route}`;
     }
 }
+
+export const getRoutName = (route: string) => {
+    return route.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+}

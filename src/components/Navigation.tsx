@@ -1,6 +1,6 @@
 import { LinkProps, useResolvedPath, useMatch, Link } from "react-router-dom";
 import { useConfig } from "../hooks/useConfig"
-import { getClass, getRouteLink } from "./Navigation.utils";
+import { getClass, getRouteLink, getRoutName } from "./Navigation.utils";
 
 interface INavigationProps {}
 
@@ -31,7 +31,7 @@ export const Navigation: React.FC<INavigationProps> = () => {
     return (
         <nav className="space-y-2">
             {navigationItem.map((route) => (
-                <CustomeNavLink to={getRouteLink(route.route)} isSupported={route.isSupported}>{route.route}</CustomeNavLink>
+                <CustomeNavLink to={getRouteLink(route.route)} isSupported={route.isSupported}>{getRoutName(route.route)}</CustomeNavLink>
             ))}
         </nav>
     )
