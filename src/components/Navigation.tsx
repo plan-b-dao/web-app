@@ -30,8 +30,8 @@ export const Navigation: React.FC<INavigationProps> = () => {
 
     return (
         <nav className="space-y-2">
-            {navigationItem.map((route) => (
-                <CustomeNavLink to={getRouteLink(route.route)} isSupported={route.isSupported}>{getRoutName(route.route)}</CustomeNavLink>
+            {navigationItem.map((route, id) => (
+                <CustomeNavLink key={id} to={getRouteLink(route.route)} isSupported={route.isSupported}>{getRoutName(route.route)}</CustomeNavLink>
             ))}
         </nav>
     )

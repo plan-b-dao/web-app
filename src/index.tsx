@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { AccountProvider, Web3Provider } from './context';
+import { AccountProvider, FounderContractProvider, Web3Provider } from './context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +12,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Web3Provider>
-      <AccountProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </AccountProvider>
+      <FounderContractProvider>
+        <AccountProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AccountProvider>
+      </FounderContractProvider>
     </Web3Provider>
   </React.StrictMode>
 );
