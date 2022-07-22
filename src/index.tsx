@@ -5,21 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AccountProvider, FounderContractProvider, Web3Provider } from './context';
+import { ErrorProvider } from './context/ErrorContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Web3Provider>
-      <FounderContractProvider>
-        <AccountProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </AccountProvider>
-      </FounderContractProvider>
-    </Web3Provider>
+    <ErrorProvider>
+      <Web3Provider>
+        <FounderContractProvider>
+          <AccountProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+          </AccountProvider>
+        </FounderContractProvider>
+      </Web3Provider>
+    </ErrorProvider>
   </React.StrictMode>
 );
 

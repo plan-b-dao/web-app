@@ -8,7 +8,7 @@ export const config = {
     isFounderActive: process.env.REACT_APP_FOUNDER_ACTIVE === "1" ? true : false,
     getNavList: () => {
         const supportedRoutes = process.env.REACT_APP_SUPPORTED_ROUTES?.split(", ");
-        const routes = ["overview", "wallet", "dao", "swap", "my-cards", "my-rewards", "market-checker", "seed-capital"]
+        const routes = ["overview", "wallet", "market", "dao", "swap", "my-cards", "my-rewards", "market-checker", "seed-capital"]
         return routes.map((route) => {
             const findRoute = supportedRoutes!.find((sr) => sr === route);
 
@@ -28,4 +28,14 @@ export const config = {
                 return NETWORK.LOCAL;
         }
     },
+    getFounderContractAddress: () => {
+        switch(config.developmentEnv()) {
+            case NETWORK.MAINNET:
+                return process.env.REACT_APP_FOUNDER_CONTRACT_ADDRESS;
+            case NETWORK.ROPSTEN:
+                return process.env.REACT_APP_FOUNDER_CONTRACT_ADDRESS_ROPSTEN;
+            default:
+                return process.env.REACT_APP_FOUNDER_CONTRACT_ADDRESS_LOCAL;
+        }
+    }
 }

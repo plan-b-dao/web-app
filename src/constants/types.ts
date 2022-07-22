@@ -1,0 +1,1 @@
+export type BaseElementType = "primary" | "secondary" | "gradient" | "warning" | "danger";

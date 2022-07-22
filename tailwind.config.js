@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'rosso': {
+          warning: "#F0000050",
           light: "#F50000",
           DEFAULT: "#D00000",
           dark: "#CC0000",
