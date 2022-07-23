@@ -16,3 +16,11 @@ export const getCardClass = (type: BaseElementType, appendClasses?: string) => {
             return baseClass + "bg-cultured-dark text-dark-jungle  " + (appendClasses || "");
     }
 }
+
+export const getCardType = (completed: boolean) => {
+    if (completed) {
+        return "gradient";
+    } else {
+        return "primary";
+    }
+}
