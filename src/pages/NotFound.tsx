@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { FounderCard } from "../components/card";
+import { Link, useNavigate } from "react-router-dom";
 
 interface INotFoundProps {}
 
@@ -9,11 +8,11 @@ export const NotFound: React.FC<INotFoundProps> = (props) => {
 
     useEffect(() => {
         const id = setTimeout(() => {
-            return navigate("/")
+            navigate("/")
         }, 3000)
 
         return () => clearTimeout(id);
-    }, []);
+    });
 
     return (
         <main className="flex flex-col items-center justify-center w-screen h-screen">

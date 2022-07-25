@@ -1,5 +1,6 @@
 import { useMilestones } from "../../hooks/useMilestones"
 import { Milestone } from "../card/Milestone";
+import { LoadingContent } from "../indicators/LoadingContent";
 import { MilestoneAchievement } from "../status";
 
 interface IMilestoneListProps {}
@@ -8,7 +9,15 @@ export const MilestoneList: React.FC<IMilestoneListProps> = () => {
     const [milestones, isLoading] = useMilestones();
 
     // todo: should be removed in future or updated
-    if (isLoading) return (<div></div>)
+    if (isLoading) return (
+        <>
+            <div>
+                <h2 className="text-[36px] font-bold">Milestones</h2>
+            </div>
+            <LoadingContent className="w-full h-[300px]" />
+            <LoadingContent className="w-full h-[300px]" />
+        </>
+    )
     
     return (
         <div>
