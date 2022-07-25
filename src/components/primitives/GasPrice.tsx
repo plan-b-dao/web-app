@@ -13,12 +13,12 @@ export const GasPrice: React.FC<IGasPriceProps> = () => {
     }, [])
 
     return (
-        <div className="flex space-x-2 p-1 bg-cultured-dark rounded-md justify-center items-center">
+        <div className="flex p-1 bg-cultured-dark rounded-md justify-center items-center">
+            <div className="text-sm mx-2">
+                {gas}
+            </div>
             <div>
                 <FontAwesomeIcon icon={faGasPump} />
-            </div>
-            <div className="text-sm">
-                {gas}
             </div>
         </div>
     );
