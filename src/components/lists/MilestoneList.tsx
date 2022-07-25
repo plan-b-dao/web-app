@@ -19,7 +19,7 @@ export const MilestoneList: React.FC<IMilestoneListProps> = () => {
                 {milestones.map((milestone, index) => (
                     <Milestone key={index} percentage={milestone.percentage} completed={milestone.percentage === 100}>
                         <div>
-                            <h3 className="text-xl font-bold my-4">Milestone 0</h3>
+                            <h3 className="text-xl font-bold my-4">{milestone.title}</h3>
                         </div>
                         <div className="space-y-4 font-playfair-display">
                             {milestone.milestones.map((milestone, index) => (

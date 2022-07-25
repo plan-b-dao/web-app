@@ -57,7 +57,7 @@ class ContentfulAPI {
             resolvedMilestone.percentage = Math.round(done / total * 100);
             milestones.push(resolvedMilestone);
         });
-        return milestones;
+        return milestones.reverse();
     }
 
     getMilestones = async (): Promise<any> => {
