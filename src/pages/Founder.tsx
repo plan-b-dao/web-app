@@ -52,12 +52,21 @@ export const Founder: React.FC<IFounderProps> = (props) => {
     return (
         <main className="space-y-8 text-[18px] mb-10">
             <div className="flex flex-col sm:flex-row items-center">
-                <div className="flex flex-col items-center">
-                    <div className=" text-gray-400"> 
-                        <span className="font-bold text-[46px] text-dark-jungle-dark">{total}</span> / 1000
+                <div className="flex flex-row space-x-2 sm:space-x-8">
+                    <div className="flex flex-col items-center px-8 py-2">
+                        <div className=" text-gray-400"> 
+                            <span className="font-bold text-[20px] text-dark-jungle-dark">{total}</span> / 1000
+                        </div>
+                        <div className="text-[14px]">Founders</div>
                     </div>
-                    <div>Founders</div>
+                    <div className="flex flex-col items-center px-8 py-2">
+                        <div className=" text-gray-400"> 
+                            <span className="font-bold text-[20px] text-dark-jungle-dark">1 ETH</span>
+                        </div>
+                        <div className="text-[14px]">deposit</div>
+                    </div>
                 </div>
+                
                 <div className="sm:ml-auto">
                     {!isFounder ?
                         <PrimaryButton disabled={isFounder} type="gradient" onClick={submitForFounder}>{account ? "Mint Founder NFT" : "Connect to Wallet"}</PrimaryButton>

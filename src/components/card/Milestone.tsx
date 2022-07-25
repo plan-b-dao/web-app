@@ -10,11 +10,11 @@ interface IMilestoneProps {
 
 export const Milestone: React.FC<IMilestoneProps> = ({ children, completed, percentage }) => {
     return (
-        <Card type={getCardType(completed)} className="flex flex-row my-4">
+        <Card type={getCardType(completed)} className="flex flex-col sm:flex-row my-4">
             <div>
                 <CircularProgress percentage={percentage}/>
             </div>
-            <div className="ml-8">
+            <div className="sm:ml-8">
                 {children}
             </div>
         </Card>
