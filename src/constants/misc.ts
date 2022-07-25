@@ -5,6 +5,7 @@ export const PLAN_B_FOUNDER_CONTRACT_ABI = [
     "function milestone(uint256 _newRate) external payable",
     "function isFounder(address _addr) external view returns (bool)",
     "function total() external view returns (uint256)",
+    "function rate() external view returns (uint256)",
     "event FounderAdded(address founder)",
     "event Withdraw(address founder, uint256 amount)",
     "event Milestone(address founder, uint256 amount)",

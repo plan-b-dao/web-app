@@ -1,4 +1,5 @@
 
+import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "../components/buttons";
 import { Card } from "../components/card";
@@ -12,6 +13,7 @@ interface IFounderProps {}
 export const Founder: React.FC<IFounderProps> = (props) => {
     //should be removed in future
     const [total, setTotal] = useState<number>(0);
+    const [rate, setRate] = useState<number>(0);
     const { account, isFounder } = useAccountContext();
     const { founderContract } = useFounderContext();
 
@@ -20,6 +22,11 @@ export const Founder: React.FC<IFounderProps> = (props) => {
 
         founderContract.contract.total().then((total) => {
             setTotal(Number(total));
+            return founderContract.contract.rate();
+        }).then((rate) => {
+            setRate(Number(ethers.utils.formatEther(rate + "")));
+        }).catch((err) => {
+            console.error(err);
         });
 
     }, [founderContract, isFounder]);
@@ -61,7 +68,9 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                     </div>
                     <div className="flex flex-col items-center px-8 py-2">
                         <div className=" text-gray-400"> 
-                            <span className="font-bold text-[20px] text-dark-jungle-dark">1 ETH</span>
+                            <span className="font-bold text-[20px] text-dark-jungle-dark">
+                                {isFounder ? `${rate} ETH` : 0}
+                            </span>
                         </div>
                         <div className="text-[14px]">deposit</div>
                     </div>

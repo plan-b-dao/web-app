@@ -37,5 +37,6 @@ export const config = {
             default:
                 return process.env.REACT_APP_FOUNDER_CONTRACT_ADDRESS_LOCAL;
         }
-    }
+    },
+    etherscanAPIKey: process.env.REACT_APP_ETHERSCAN_API_KEY ?? ""
 }

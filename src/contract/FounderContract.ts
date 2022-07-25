@@ -12,6 +12,7 @@ interface IFounderContractABI extends ethers.Contract {
     isFounder: (addr: string) => Promise<boolean>
     balance: () => Promise<string>
     total: () => Promise<number>
+    rate: () => Promise<number>
 }
 
 export class FounderContract {
