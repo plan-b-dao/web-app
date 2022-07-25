@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './shared';
-import { Founder, Home } from './pages';
+import { Founder, Home, NotFound } from './pages';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="founder" element={<Founder />} />
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 }
