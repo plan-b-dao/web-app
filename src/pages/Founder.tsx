@@ -3,9 +3,8 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "../components/buttons";
 import { Card } from "../components/card";
-import { Milestone } from "../components/card/Milestone";
+import { MilestoneList } from "../components/lists/MilestoneList";
 import { LinkTag } from "../components/primitives/LinkTag";
-import { MilestoneAchievement } from "../components/status";
 import { useAccountContext, useFounderContext } from "../context";
 
 interface IFounderProps {}
@@ -103,61 +102,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                     </div>
                 </Card>
             </div>
-            <div>
-                <div>
-                    <h2 className="text-[36px] font-bold">Milestones</h2>
-                </div>
-                <div>
-                    <Milestone percentage={100} completed={true}>
-                        <div>
-                            <h3 className="text-xl font-bold my-4">Milestone 0</h3>
-                        </div>
-                        <div className="space-y-4 font-playfair-display">
-                            <MilestoneAchievement>
-                                Deployment of planb dao and create liquidity pool on uniswap
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Reaching 100+ Founders
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Release of the white paper
-                            </MilestoneAchievement>
-                        </div>
-                    </Milestone>
-                    <Milestone percentage={0} completed={false}>
-                        <div>
-                            <h3 className="text-xl font-bold my-4">Milestone 0</h3>
-                        </div>
-                        <div className="space-y-4 font-playfair-display">
-                            <MilestoneAchievement>
-                                Deployment of planb dao and create liquidity pool on uniswap
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Reaching 100+ Founders
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Release of the white paper
-                            </MilestoneAchievement>
-                        </div>
-                    </Milestone>
-                    <Milestone percentage={0} completed={false}>
-                        <div>
-                            <h3 className="text-xl font-bold my-4">Milestone 0</h3>
-                        </div>
-                        <div className="space-y-4 font-playfair-display">
-                            <MilestoneAchievement>
-                                Deployment of planb dao and create liquidity pool on uniswap
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Reaching 100+ Founders
-                            </MilestoneAchievement>
-                            <MilestoneAchievement>
-                                Release of the white paper
-                            </MilestoneAchievement>
-                        </div>
-                    </Milestone>
-                </div>
-            </div>
+            <MilestoneList />
         </main>
     );
 }

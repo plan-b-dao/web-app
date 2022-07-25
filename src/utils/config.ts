@@ -38,5 +38,7 @@ export const config = {
                 return process.env.REACT_APP_FOUNDER_CONTRACT_ADDRESS_LOCAL;
         }
     },
-    etherscanAPIKey: process.env.REACT_APP_ETHERSCAN_API_KEY ?? ""
+    etherscanAPIKey: process.env.REACT_APP_ETHERSCAN_API_KEY ?? "",
+    contentfulSpaceId: process.env.REACT_APP_CONTENTFUL_SPACE_ID ?? "",
+    contentfulAccessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN ?? "",
 }
