@@ -8,7 +8,7 @@ interface ILayoutProps {}
 export const Layout: React.FC<ILayoutProps> = () => {
 
     return (
-        <div className="flex">
+        <div className="flex"> 
             <aside className="hidden md:block w-[240px] bg-cultured-light h-screen shadow-lg">
                 <Logo />
                 <Navigation />
