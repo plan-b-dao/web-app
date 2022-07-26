@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useFounderContext } from "../context";
 
-enum MintFounderState {
+export enum MintFounderState {
     Mint,
     Minting,
-    Minted,
 }
 
 export const useFounderMint = () => {
@@ -18,8 +17,8 @@ export const useFounderMint = () => {
         founderContract
             .becomeFounder(account)
             .then((tx) => {
-                //return tx hash
-                console.log(tx);
+                // todo: handle tx
+                setState(MintFounderState.Minting);
             })
             .finally(() => setIsProcessing(false));
     }

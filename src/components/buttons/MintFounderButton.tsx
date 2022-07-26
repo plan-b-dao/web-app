@@ -1,4 +1,4 @@
-import { useFounderMint } from "../../hooks";
+import { MintFounderState, useFounderMint } from "../../hooks";
 import { PrimaryButton } from "./PrimaryButton";
 
 interface IMintFounderButtonProps {
@@ -8,14 +8,22 @@ interface IMintFounderButtonProps {
 
 export const MintFounderButton: React.FC<IMintFounderButtonProps> = (props) => {
     const { isFounder, account } = props;
-    const [isProcessing, onMint] = useFounderMint();
+    const [isProcessing, onMint, state] = useFounderMint();
+
+    const getText = () => {
+        if (state === MintFounderState.Mint) {
+            return "Become a Founder";
+        }
+
+        return "Transaction in progress..."
+    }
 
     return (
         <PrimaryButton
             isProcessing={isProcessing}
-            disabled={isFounder}
+            disabled={isFounder || state === 1}
             type="gradient"
             onClick={() => onMint(account)}
-        >{account ? "Mint Founder NFT" : "Connect to Wallet"}</PrimaryButton>
+        >{account ? getText() : "Connect to Wallet"}</PrimaryButton>
     );
 }
