@@ -2,6 +2,7 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "../components/buttons";
+import { MintFounderButton } from "../components/buttons/MintFounderButton";
 import { Card } from "../components/card";
 import { MilestoneList } from "../components/lists/MilestoneList";
 import { LinkTag } from "../components/primitives/LinkTag";
@@ -77,7 +78,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                 
                 <div className="sm:ml-auto">
                     {!isFounder ?
-                        <PrimaryButton disabled={isFounder} type="gradient" onClick={submitForFounder}>{account ? "Mint Founder NFT" : "Connect to Wallet"}</PrimaryButton>
+                        <MintFounderButton isFounder={isFounder} account={account!} />
                     :
                         <PrimaryButton type="warning" onClick={removeFounder}>{account ? "Remove Founder status" : "Connect to Wallet"}</PrimaryButton>
                     }

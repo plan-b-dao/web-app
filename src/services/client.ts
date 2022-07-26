@@ -1,4 +1,4 @@
-import etherscan from "./etherscan";
+import etherscanAPI from "./etherscan";
 import contentfulAPI from "./contentful";
 
 class Client {
@@ -6,7 +6,7 @@ class Client {
     contentful;
 
     constructor() {
-        this.etherscan = etherscan;
+        this.etherscan = etherscanAPI;
         this.contentful = contentfulAPI;
     }
 }

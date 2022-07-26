@@ -1,8 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-type PrimaryButtonType = "primary" | "secondary" | "gradient" | "warning" | "danger";
+type PrimaryButtonType = "primary" | "secondary" | "gradient" | "warning" | "danger" | "isProcessing";
 
 interface IPrimaryButtonProps {
     children: React.ReactNode
@@ -10,11 +11,12 @@ interface IPrimaryButtonProps {
     icon?: IconProp
     link?: string
     type?: PrimaryButtonType
+    isProcessing?: boolean
     onClick?: () => void
 }
 
 export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
-    const { children, disabled = false, icon, link, onClick, type = "primary" } = props;
+    const { children, disabled = false, icon, link, onClick, type = "primary", isProcessing = false } = props;
 
     const getClass = (type: PrimaryButtonType) => {
         const baseClasses = "flex items-center px-4 py-2 rounded font-poppins font-bold disabled:opacity-50 ";
@@ -27,9 +29,19 @@ export const PrimaryButton: React.FC<IPrimaryButtonProps> = (props) => {
                 return baseClasses + " border-[2px] border-cultured-dark text-dark-jungle-light hover:bg-rosso-warning hover:text-cultured-light transition"
             case "danger":
                 return baseClasses + " text-cultured-light bg-rosso hover:bg-rosso-light hover:text-cultured-light transition"
+            case "isProcessing":
+                return baseClasses + " text-[#ccc] bg-cultured shadow-inner"
             default:
                 return baseClasses + " bg-dark-jungle hover:bg-dark-jungle-light text-cultured-light";
         }
+    }
+
+    if (isProcessing) {
+        return (
+            <div className={getClass("isProcessing")}>
+                <FontAwesomeIcon className='w-6 h-6 mr-2 animate-spin' icon={faSpinner} /> Processing
+            </div>
+        );
     }
 
     if (link) {
