@@ -94,7 +94,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                         <p className=" font-playfair-display text-md">Learn more about the project, DAO token, and rewards that you get as a founder</p>
                     </div>
                     <div className="ml-auto">
-                        <LinkTag target="_blank" rel="noreferrer" link="https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable"/>
+                        <LinkTag title="article" target="_blank" rel="noreferrer" link="https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable"/>
                     </div>
                 </Card>
                 <Card type="gradient" className="flex flex-col space-y-4">
