@@ -86,16 +86,18 @@ class ContentfulAPI {
                 links: []
             }
 
-            item.fields.socialLinks.forEach((link: any) => {
-                formatedItem.links.push({
-                    link: link.fields.link,
-                    platform: link.fields.platform,
-                    title: link.fields.title
-                });
-            })
-
+            if (item.fields.socialLinks) {
+                item.fields.socialLinks.forEach((link: any) => {
+                    formatedItem.links.push({
+                        link: link.fields.link,
+                        platform: link.fields.platform,
+                        title: link.fields.title
+                    });
+                })
+            }
             formated.push(formatedItem);
         });
+        console.log(formated)
         return formated.reverse();
     }
 
@@ -108,9 +110,9 @@ class ContentfulAPI {
         }
     }
 
-    getProjectNews = async () => {
+    getProjectNews = async (page?: string) => {
         try {
-            const news = await this.contentful.getEntries({content_type: "news", resolveLinks: true});
+            const news = await this.contentful.getEntries({content_type: "news", resolveLinks: true, 'fields.page': page});
             console.log(news.items);
             return this.formatProjectNewsResponse(news.items) as any;
         } catch (error) {

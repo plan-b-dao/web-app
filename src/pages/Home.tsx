@@ -1,4 +1,4 @@
-import { FounderCard } from "../components/card";
+import { ActionCard } from "../components/card";
 import { WrapperIndicator } from "../components/indicators";
 import { LoadingContent } from "../components/indicators/LoadingContent";
 import { useProjectNews } from "../hooks/useProjectNews";
@@ -11,10 +11,10 @@ export const Home: React.FC<IHomeProps> = (props) => {
     return (
         <main>
             <h1 className="font-bold text-2xl mb-6">Project News</h1>
-            <div>
+            <div className="space-y-8">
                 <WrapperIndicator isLoading={isFetching} element={<LoadingContent className="w-full h-32"/>}>
                     {news.map((news, index) => (
-                        <FounderCard
+                        <ActionCard
                             key={index}
                             title={news.title}
                             desc={news.desc}

@@ -1,7 +1,7 @@
 import { PrimaryButton } from "../buttons";
 import { LinkTag } from "../primitives/LinkTag";
 
-interface IFounderCardProps {
+interface IActionCardProps {
     title: string;
     desc: string;
     links: any[];
@@ -10,10 +10,10 @@ interface IFounderCardProps {
     action?: string;
 }
 
-export const FounderCard: React.FC<IFounderCardProps> = (props) => {
+export const ActionCard: React.FC<IActionCardProps> = (props) => {
     const {title, desc, links, buttonText, page} = props;
     return (
-        <div className="bg-cultured-dark px-4 py-2 flex flex-col sm:flex-row shadow">
+        <div className="bg-cultured px-4 pt-2 pb-4 flex flex-col sm:flex-row border-b-[2px] border-cultured-dark hover:bg-cultured-dark cursor-pointer transition-all">
             <div className="flex-1 space-y-4">
                 <div className="space-y-1">
                     <h3 className="text-xl">{title}</h3>
@@ -21,7 +21,7 @@ export const FounderCard: React.FC<IFounderCardProps> = (props) => {
                 </div>
                 <div>
                     {links.map((link, index) => (
-                        <LinkTag key={index} title={link.title} link={link.link} />
+                        <LinkTag key={index} target="_blank" rel="noreferrer" title={link.title} link={link.link} />
                     ))}
                 </div>
             </div>

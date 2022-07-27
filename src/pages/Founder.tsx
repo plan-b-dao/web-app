@@ -3,11 +3,12 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "../components/buttons";
 import { MintFounderButton } from "../components/buttons/MintFounderButton";
-import { Card } from "../components/card";
+import { Card, NewsCard } from "../components/card";
 import { DotsIndicator, WrapperIndicator } from "../components/indicators";
+import { LoadingContent } from "../components/indicators/LoadingContent";
 import { MilestoneList } from "../components/lists/MilestoneList";
-import { LinkTag } from "../components/primitives/LinkTag";
 import { useAccountContext, useFounderContext } from "../context";
+import { useProjectNews } from "../hooks/useProjectNews";
 
 interface IFounderProps {}
 
@@ -17,6 +18,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
     const [rate, setRate] = useState<number>(0);
     const { account, isFounder, isReady } = useAccountContext();
     const { founderContract } = useFounderContext();
+    const [news, fetchingNews] = useProjectNews("founder");
 
     useEffect(() => {
         if (!founderContract) return;
@@ -31,19 +33,6 @@ export const Founder: React.FC<IFounderProps> = (props) => {
         });
 
     }, [founderContract, isFounder]);
-
-    const submitForFounder = async () => {
-        if (!founderContract) return;
-        if (!account) return;
-        if (isFounder) return;
-
-        try {
-            const res = await founderContract.becomeFounder(account);
-            console.log(res);
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const removeFounder = async () => {
         if (!founderContract) return;
@@ -88,16 +77,17 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                 </div>
             </div>
             <div className="space-y-8">
-                <Card className="flex flex-col space-y-4" onClose={() => console.log("todo")}>
-                    <div className="space-y-2">
-                        <h3 className="font-bold text-2xl">Our first Medium article is out!</h3>
-                        <p className=" font-playfair-display text-md">Learn more about the project, DAO token, and rewards that you get as a founder</p>
-                    </div>
-                    <div className="ml-auto">
-                        <LinkTag title="article" target="_blank" rel="noreferrer" link="https://stackoverflow.com/questions/50709625/link-with-target-blank-and-rel-noopener-noreferrer-still-vulnerable"/>
-                    </div>
-                </Card>
-                <Card type="gradient" className="flex flex-col space-y-4">
+                <WrapperIndicator isLoading={fetchingNews} element={<LoadingContent className="w-full h-32"/>}>
+                    {news.map((news, index) => (
+                        <NewsCard
+                            key={index}
+                            title={news.title}
+                            desc={news.desc}
+                            links={news.links}
+                        />
+                    ))}
+                </WrapperIndicator>
+                <Card type="gradient" className="flex flex-col space-y-4 hidden">
                     <div className="text-2xl uppercase font-bold">
                         YOUR 210.000 PLAN B DAO TOKEN ARE HERE TO MINT ! 
                     </div>
