@@ -23,7 +23,7 @@ export const CircularProgress: React.FC<ICircularProgressProps> = (props) => {
     return (
         <svg viewBox={viewBox} width={sqSize} height={sqSize}>
             <circle
-                className=" fill-transparent stroke-cultured"
+                className=" fill-transparent stroke-cultured-dark"
                 cx={sqSize / 2}
                 cy={sqSize / 2}
                 r={radius}
