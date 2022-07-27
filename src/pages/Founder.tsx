@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PrimaryButton } from "../components/buttons";
 import { MintFounderButton } from "../components/buttons/MintFounderButton";
 import { Card } from "../components/card";
+import { DotsIndicator, WrapperIndicator } from "../components/indicators";
 import { MilestoneList } from "../components/lists/MilestoneList";
 import { LinkTag } from "../components/primitives/LinkTag";
 import { useAccountContext, useFounderContext } from "../context";
@@ -14,7 +15,7 @@ export const Founder: React.FC<IFounderProps> = (props) => {
     //should be removed in future
     const [total, setTotal] = useState<number>(0);
     const [rate, setRate] = useState<number>(0);
-    const { account, isFounder } = useAccountContext();
+    const { account, isFounder, isReady } = useAccountContext();
     const { founderContract } = useFounderContext();
 
     useEffect(() => {
@@ -66,14 +67,16 @@ export const Founder: React.FC<IFounderProps> = (props) => {
                         </div>
                         <div className="text-[14px]">Founders</div>
                     </div>
-                    <div className="flex flex-col items-center px-8 py-2">
-                        <div className=" text-gray-400"> 
-                            <span className="font-bold text-[20px] text-dark-jungle-dark">
-                                {isFounder ? `${rate} ETH` : 0}
-                            </span>
+                    <WrapperIndicator isLoading={!isReady} element={<DotsIndicator />}>
+                        <div className="flex flex-col items-center px-8 py-2">
+                            <div className=" text-gray-400"> 
+                                    <span className="font-bold text-[20px] text-dark-jungle-dark">
+                                        {isFounder ? `${rate} ETH` : 0}
+                                    </span>
+                            </div>
+                            <div className="text-[14px]">deposit</div>
                         </div>
-                        <div className="text-[14px]">deposit</div>
-                    </div>
+                    </WrapperIndicator>
                 </div>
                 
                 <div className="sm:ml-auto">

@@ -11,6 +11,7 @@ interface IAccountProviderProps {
 interface IAccountContextState {
     account: string | undefined
     isFounder: boolean
+    isReady: boolean
     connectWithWallet: () => Promise<void>
     updateIsFounder: (f: boolean, txA?: string) => void
 }
@@ -20,15 +21,18 @@ const AccountContext = createContext({} as IAccountContextState);
 export const AccountProvider: React.FC<IAccountProviderProps> = ({children}) => {
     const [account, setAccount] = useState();
     const [isFounder, setIsFounder] = useState(false);
+    const [isReady, setIsReady] = useState(false);
     const { provider } = useWeb3Context();
     const { founderContract } = useFounderContext();
 
     useEffect(() => {
         if (!provider || !founderContract || !account) return;
+        setIsReady(false);
         founderContract.contract.isFounder(account)
             .then(isFounder => Promise.resolve(updateIsFounder(isFounder)))
             .then(() => founderContract.setSignerContract(provider, account))
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
+            .finally(() => setIsReady(true));
     }, [account, provider, founderContract]);
 
     useEffect(() => {
@@ -70,7 +74,7 @@ export const AccountProvider: React.FC<IAccountProviderProps> = ({children}) => 
     
     
     return (
-        <AccountContext.Provider value={{account, isFounder, connectWithWallet, updateIsFounder}}>
+        <AccountContext.Provider value={{account, isFounder, isReady, connectWithWallet, updateIsFounder}}>
             {children}
         </AccountContext.Provider>
     );
